@@ -5,6 +5,9 @@ class TrucksController < ApplicationController
     @trucks = Truck.all
   end
 
+  def show
+  end
+
   def new
     @truck = Truck.new
   end
@@ -30,9 +33,6 @@ class TrucksController < ApplicationController
   def destroy
     @truck.delete
     redirect_to trucks_path
-  end
-
-  def show
   end
 
   private

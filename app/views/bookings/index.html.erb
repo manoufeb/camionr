@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% @bookings.each do |booking|  %>
+        <% if booking.availability %>
+          <div class="product">
+            <div class='product-upvote'>
+              <div class="product-arrow"></div>
+              <div class='product-count'>95</div>
+            </div>
+            <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
+            <div class='product-body'>
+              <h3><%="#{booking.gauge} #{booking.category}" %></h3>
+              <p><%=booking.description%></p>
+            </div>
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+              <li><p>Prix:<%= booking.location%></p></li>
+            </ul>
+          </div>
+        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
