@@ -3,7 +3,7 @@ class TrucksController < ApplicationController
 
   def index
     @trucks = Truck.all
-  end 
+  end
 
   def new
     @truck = Truck.new
@@ -15,7 +15,7 @@ class TrucksController < ApplicationController
     if @truck.save
       redirect_to truck_path(@truck)
     else
-      render 'new'
+      render "new"
     end
   end
 
