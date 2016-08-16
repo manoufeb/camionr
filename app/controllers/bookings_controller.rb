@@ -1,18 +1,19 @@
 class BookingsController < ApplicationController
   before_action :set_truck, only: [ :edit, :update, :destroy, :show ]
 
-  def index
-    @bookings = Booking.all
-  end
+  # def index
+  #   @bookings = Booking.where(user: current_user)
+  # end
 
   def new
     @booking = Booking.new
   end
 
   def create
-    @booking = Booking.new(truck_params)
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to root_path #user_path(current_user)
     else
       render 'new'
     end
@@ -20,7 +21,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    redirect_to root_path #user_path(current_user)
   end
 
   def edit
@@ -38,7 +39,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:starting_date, :ending_date, :location, :description, :truck_id, :user_id)
+    params.require(:booking).permit(:starting_date, :ending_date, :location, :description, :truck_id)
   end
 end
 
