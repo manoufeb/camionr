@@ -11,7 +11,7 @@ class TrucksController < ApplicationController
     if @truck.save
       redirect_to truck_path(@truck)
     else
-      render 'new'
+      render "new"
     end
   end
 
