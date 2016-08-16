@@ -1,6 +1,9 @@
 class TrucksController < ApplicationController
-
   before_action :set_truck, only: [ :edit, :update, :destroy, :show ]
+
+  def index
+    @trucks = Truck.all
+  end 
 
   def new
     @truck = Truck.new
@@ -42,4 +45,3 @@ private
      params.require(:truck).permit(:gauge, :category, :description, :availability, :numberplate, :price, :user_id)
    end
 end
-
