@@ -26,22 +26,21 @@ class TrucksController < ApplicationController
   def edit
   end
 
-  def destroy
-    @truck.delete
-    redirect_to trucks_path
-  end
+  def destroy
+    @truck.delete
+    redirect_to trucks_path
+  end
 
   def show
   end
 
+  private
 
-private
+  def set_truck
+    @truck = Truck.find(params[:id])
+  end
 
-   def set_truck
-     @truck = truck.find(params[:id])
-   end
-
-   def truck_params
-     params.require(:truck).permit(:gauge, :category, :description, :availability, :numberplate, :price, :user_id)
-   end
+  def truck_params
+    params.require(:truck).permit(:gauge, :category, :description, :availability, :numberplate, :price, :user_id)
+  end
 end
