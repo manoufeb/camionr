@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="media">
+        <div class="media-body">
+          <div class="media-section">
+            <h2><%= @truck.description %></h2>
+          </div>
+        </div>
+        <div class="media-aside">
+          <div class="media-section">
+            <h1><%= @truck.category %></h1>
+            <h1><%= @truck.gauge %></h1>
+          </div>
+          <div class="media-section">
+            <h2><%= @truck.price %></h2>
+          </div>
+        </div>
+      </div>
+      <%= link_to "Retour au resultat de la recherche" , trucks_path  %>
+    </div>
+  </div>
+</div>
