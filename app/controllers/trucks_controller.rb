@@ -15,7 +15,6 @@ class TrucksController < ApplicationController
   def create
     @truck = Truck.new(truck_params)
     @truck.user = current_user
-    raise
     if @truck.save
       redirect_to truck_path(@truck)
     else
