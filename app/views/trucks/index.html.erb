@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+      <%= link_to t(".top_call_to_action", default: "booker une commande"), new_booking_path, class: "button-create-booking btn" %>
+
       <% @trucks.each do |truck| %>
         <% if truck.availability %>
           <div class="product">
@@ -14,10 +16,14 @@
               <p><%=truck.description%></p>
             </div>
             <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li><p>Prix:<%= truck.price%></p></li>
+              <li><p>Prix:<%= truck.price %></p></li>
             </ul>
+            <div class="card-body">
+            <%= link_to truck.name, truck_path(truck) %>
+          </div>
           </div>
         <% else %>
+          <h2>There is no available trucks</h2>
         <% end %>
       <% end %>
     </div>
