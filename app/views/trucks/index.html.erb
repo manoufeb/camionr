@@ -6,10 +6,6 @@
       <% @trucks.each do |truck| %>
         <% if truck.availability %>
           <div class="product">
-            <div class='product-upvote'>
-              <div class="product-arrow"></div>
-              <div class='product-count'>95</div>
-            </div>
             <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
             <div class='product-body'>
               <h3><%="#{truck.gauge} #{truck.category}" %></h3>
