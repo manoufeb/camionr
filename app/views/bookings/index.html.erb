@@ -1,24 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <% @bookings.each do |booking|  %>
-        <% if booking.availability %>
+      <% @bookings.each do |booking| %>
           <div class="product">
-            <div class='product-upvote'>
-              <div class="product-arrow"></div>
-              <div class='product-count'>95</div>
-            </div>
-            <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
             <div class='product-body'>
-              <h3><%="#{booking.gauge} #{booking.category}" %></h3>
-              <p><%=booking.description%></p>
+              <h3><%= booking.truck.category%></h3>
+              <p><%= booking.description%></p>
+              <p><%= booking.location%></p>
+
             </div>
             <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li><p>Prix:<%= booking.location%></p></li>
+              <li><p>Prix:<%= booking.truck.price %></p></li>
             </ul>
+            <div class="card-body">
+              from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
+            </div>
           </div>
-        <% else %>
-        <% end %>
       <% end %>
     </div>
   </div>

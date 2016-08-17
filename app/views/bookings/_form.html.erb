@@ -1,4 +1,4 @@
-<%= simple_form_for(@booking) do |f| %>
+<%= simple_form_for([@truck, @booking]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -9,6 +9,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, hint: "#{link_to 'Book', truck_bookings_path}"%>
+
   </div>
 <% end %>
