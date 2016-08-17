@@ -37,11 +37,6 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
@@ -50,7 +45,7 @@
         </div>
       </div>
 
-      <%= link_to t(".top_call_to_action", default: "Mon compte"), '#', class: "navbar-wagon-item brand-button-border btn" %>
+      <%= link_to t(".top_call_to_action", default: "Creer un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
 
     <% else %>
 
@@ -62,7 +57,7 @@
 
     <% end %>
 
-    
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
