@@ -38,10 +38,8 @@ class TrucksController < ApplicationController
   private
 
   def set_truck
-    @truck = truck.find(params[:id])
+    @truck = Truck.find(params[:id])
   end
-
-
 
   def truck_params
     params.require(:truck).permit(:gauge, :category, :description, :availability, :numberplate, :price, :user_id)
