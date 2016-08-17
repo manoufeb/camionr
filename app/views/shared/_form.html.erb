@@ -1,0 +1,10 @@
+<%= simple_form_for(@truck) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :type, placeholder: "Grue" %>
+  <%= f.input :category, placeholder: "6x4" %>
+  <%= f.input :description, placeholder: "Nouvelle grue" %>
+  <%= f.input :numberplate, placeholder: "624587238" %>
+  <%= f.input :price, placeholder: "300€" %>
+  <%= f.button :submit, class: "btn btn-success"  %>
+<% end %>
