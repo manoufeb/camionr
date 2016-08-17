@@ -7,7 +7,7 @@
   height: 70px;
   padding: 0px 30px;
   align-items: center;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 
 .registrations-new {
@@ -29,6 +29,12 @@
 }
 
 .trucks-new {
+  .navbar-wagon {
+    background: #333E50;
+  }
+}
+
+.trucks-show {
   .navbar-wagon {
     background: #333E50;
   }

@@ -15,7 +15,6 @@
               <%= link_to truck.gauge, truck_path(truck) %>
             </div>
             <%= link_to t(".top_call_to_action", default: "booker ce truck"), new_truck_booking_path(truck), class: "button-create-booking btn" %>
-          </div>
         <% else %>
           <h2>There is no available truck</h2>
         <% end %>
