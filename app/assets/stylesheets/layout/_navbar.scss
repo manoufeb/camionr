@@ -1,13 +1,26 @@
 /* Main class */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  // background: white;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
   padding: 0px 30px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between;  
+}
+
+.registrations-new {
+  .navbar-wagon {
+    background: #333E50;
+  }
+}
+
+
+.sessions-new {
+  .navbar-wagon {
+    background: #333E50;
+  }
 }
 
 /* Optional class to fix the navbar on top */
@@ -21,7 +34,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 50px;
+  width: 180px;
 }
 
 /* Navbar right section (with form, links, button) */
