@@ -6,4 +6,5 @@ class Truck < ApplicationRecord
 
   validates :gauge, :category, :price, presence: true
   validates :numberplate, presence: true, uniqueness: true
+
 end
