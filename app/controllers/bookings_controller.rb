@@ -1,9 +1,9 @@
 class BookingsController < ApplicationController
-  before_action :set_truck, only: [ :edit, :update, :destroy, :show ]
+  before_action :set_truck, only: [ :new, :create, :edit, :update, :destroy, :show ]
 
-  # def index
-  #   @bookings = Booking.where(user: current_user)
-  # end
+  def index
+    @bookings = current_user.bookings
+  end
 
   def new
     @booking = Booking.new
@@ -12,8 +12,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.truck = @truck
     if @booking.save
-      redirect_to root_path #user_path(current_user)
+      redirect_to bookings_path #user_path(current_user)
     else
       render 'new'
     end
@@ -33,6 +34,10 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def set_truck
+    @truck = Truck.find(params[:truck_id])
+  end
 
   def set_booking
     @booking = Booking.find(params[:id])

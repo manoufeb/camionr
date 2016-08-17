@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <%= link_to t(".top_call_to_action", default: "booker une commande"), new_booking_path, class: "button-create-booking btn" %>
       <% @trucks.each do |truck| %>
         <% if truck.availability %>
           <div class="product">
-            <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
             <div class='product-body'>
               <h3><%="#{truck.gauge} #{truck.category}" %></h3>
               <p><%=truck.description%></p>
@@ -14,9 +12,9 @@
               <li><p>Prix:<%= truck.price %></p></li>
             </ul>
             <div class="card-body">
-            <%= link_to truck.gauge , truck_path(truck) %>
-          </div>
-          </div>
+              <%= link_to truck.gauge, truck_path(truck) %>
+            </div>
+            <%= link_to t(".top_call_to_action", default: "booker ce truck"), new_truck_booking_path(truck), class: "button-create-booking btn" %>
         <% else %>
           <h2>There is no available truck</h2>
         <% end %>

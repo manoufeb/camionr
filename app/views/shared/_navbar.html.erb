@@ -44,8 +44,9 @@
           </ul>
         </div>
       </div>
-
+      <%= link_to t(".top_call_to_action", default: "Voir mes commandes"), bookings_path, class: "navbar-wagon-item brand-button-border btn" %>
       <%= link_to t(".top_call_to_action", default: "Creer un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
+      <%= link_to t(".top_call_to_action", default: "Camions disponibles"), trucks_path, class: "navbar-wagon-item brand-button-border btn" %>
 
     <% else %>
 
