@@ -1,4 +1,4 @@
-<div class="navbar-wagon navbar-wagon-fixed">
+<div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
@@ -50,15 +50,19 @@
         </div>
       </div>
 
+      <%= link_to t(".top_call_to_action", default: "Mon compte"), '#', class: "navbar-wagon-item brand-button-border btn" %>
+
     <% else %>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Inscription"), new_user_session_path, class: "navbar-wagon-item brand-button-blue btn" %>
+      <!-- Sign_up -->
+      <%= link_to t(".sign_in", default: "Inscription"), new_user_registration_path, class: "navbar-wagon-item brand-button-blue btn" %>
+
+      <!-- Login -->
+    <%= link_to t(".top_call_to_action", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item brand-button btn" %>
 
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Connexion"), new_user_registration_path, class: "navbar-wagon-item brand-button btn" %>
+    
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
