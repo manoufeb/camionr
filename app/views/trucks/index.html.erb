@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xs-12">
       <%= link_to t(".top_call_to_action", default: "booker une commande"), new_booking_path, class: "button-create-booking btn" %>
-
       <% @trucks.each do |truck| %>
         <% if truck.availability %>
           <div class="product">
