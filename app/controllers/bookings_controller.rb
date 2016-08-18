@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     @confirmed_bookings = current_user.truck_bookings.where(status: "confirmed")
+    @bookings = Booking.all
   end
 
   def pending_bookings
