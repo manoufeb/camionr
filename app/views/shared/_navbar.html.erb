@@ -29,7 +29,11 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= cl_image_tag current_user.avatar, height: 40, width: 40, crop: :fit, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if current_user.avatar.url %>
+            <%= cl_image_tag current_user.avatar, height: 40, width: 40, crop: :fit, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag "http://placehold.it/32x32", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+          <% end %>
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -38,6 +42,7 @@
               <% end %>
             </li>
             <li>
+
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
