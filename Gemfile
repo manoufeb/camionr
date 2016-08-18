@@ -8,6 +8,8 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', github: 'plataformatec/devise'
 gem 'redis'
+gem 'cloudinary', '1.1.0'
+gem 'carrierwave'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -17,7 +19,6 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'rails-assets-bootstrap-datepicker', source: 'https://rails-assets.org'
-
 
 group :development, :test do
   gem 'binding_of_caller'

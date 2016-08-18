@@ -1,8 +1,98 @@
+<head>
+
+</head>
+
+<body>
 <div class="banner" style="background-image: linear-gradient(-180deg, #071A2E 0%, rgba(24,79,136,0.27) 100%), url(<%= image_url 'banner.jpg' %>);">
-    <div class="banner-content text-center">
-      <h1><b>Location</b>
-       de véhicules de chantier</h1>
-       <h1>entre <b>professionnels</b> du BTP</h1>
+  <div class="banner-content text-center">
+    <h1><b>Location</b>
+     de véhicules de chantier</h1>
+     <h1>entre <b>professionnels</b> du BTP</h1>
+     <%= link_to t(".top_call_to_action", default: "Louer un camion"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
+  </div>
+</div>
+  <div class="container text-center padded features">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= asset_path('truck.png') %>" alt="">
+        <h2>Trouvez vous un beau camion</h2>
+        <p>Le plus gros catalogue de camion du village !</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= asset_path('driver.png') %>" alt="">
+        <h2>Chauffeur à la demande</h2>
+        <p>Nos Pedro sont disponible pour toutes missions !</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= asset_path('pay.png') %>" alt="">
+        <h2>Payez en ligne</h2>
+        <p>Plus de problème de comptabilité.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <img src="<%= asset_path('booking.png') %>" alt="">
+        <h2>Centralisation de vos commandes</h2>
+        <p>Gerer efficacement votre chantier.</p>
+      </div>
     </div>
   </div>
-  
+  <div class="wrapper-dark-home">
+    <div class="container">
+      <div class="row">
+      <div class="small-padded text-center">
+      <h3>Camions <b>disponibles</b></h3>
+      </div>
+        <% @trucks.last(4).each do |truck| %>
+          <% if truck.availability %>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <span class="price-icon"></span>
+                        <span class="price-value"><%=truck.price.ceil%>€<span class="month">/jour</span></span>
+                        <h3 class="heading"><%=  truck.gauge %></h3>
+                    </div>
+                    <div class="pricingContent">
+                        <ul>
+                            <li><i class="fa fa-truck"></i><%=truck.category%></li>
+                            <li><i class="fa fa-info-circle"></i><%=truck.description%></li>
+                            <li><i class="fa fa-star" style="color:#F6C667"></i><i class="fa fa-star" style="color:#F6C667"></i><i class="fa fa-star-half-o" style="color:#F6C667"></i>
+                            </li>
+                        </ul>
+                    </div><!-- /  CONTENT BOX-->
+                    <div class="pricingTable-signup">
+                    <%= link_to t(".top_call_to_action", default: "Louer ce truck"), new_truck_booking_path(truck) %>
+                    </div>
+                </div><!-- BUTTON BOX-->
+            </div>
+            <% else %>
+              <h2>Il n'y a pas de camion disponible</h2>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  <div class="text-center padded" id="newsletter">
+    <h2>Besoin d'aide ?</h2>
+    <p>Renseignez votre e-mail pour etre contacté</p>
+    <form class="form-inline">
+      <input type="email" placeholder="pedro@camionr.pt" class="form-control">
+      <input type="submit" value="Souscrire" class="btn btn-primary btn-bordered btn-bordered-primary">
+    </form>
+  </div>
+  <div class="footer">
+    <ul class="text-center list-inline">
+      <li>
+        <a href="https://www.youtube.com/watch?v=iU9RBvJDD70"><i class="fa fa-youtube"></i></a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/The-BEST-Truck-302577509758593/"><i class="fa fa-facebook"></i></a>
+      </li>
+      <li>
+        <a href="https://twitter.com/volvotrucks"><i class="fa fa-twitter"></i></a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/freightlinertrucks/?hl=fr"><i class="fa fa-instagram"></i></a>
+      </li>
+      <br>
+      En route Pedro !
+    </ul>
+  </div>
+</body>

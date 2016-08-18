@@ -2,22 +2,15 @@
   <div class="row">
     <div class="col-xs-12">
       <% @bookings.each do |booking| %>
-          <div class="product">
-            <div class='product-body'>
-              <h3><%= booking.truck.user_id %></h3>
-              <h3><%= booking.truck.category%></h3>
-              <p><%= booking.description%></p>
-              <p><%= booking.location%></p>
-              <p>status<%= booking.status%></p>
-            </div>
-            <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li><p>Prix:<%= booking.truck.price %></p></li>
-            </ul>
-            <div class="card-body">
-              from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
-            </div>
+        <div class="product">
+          <div class='product-body'>
+            <h3><%= booking.truck.user_id %></h3>
+            <h3><%= booking.truck.category%></h3>
+            <p><%= booking.description%></p>
+            <p><%= booking.location%></p>
+            <p>status<%= booking.status%></p>
           </div>
-      <% end %>
+        </div>
     </div>
   </div>
 </div>

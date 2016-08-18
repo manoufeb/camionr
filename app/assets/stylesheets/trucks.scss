@@ -1,7 +1,14 @@
-.wrapper-dark-blue{
+.wrapper-dark-blue {
   background: #333E50;
   color: white;
   min-height: calc(100vh - 70px);
+}
+
+.wrapper-dark-blue h1 {
+  font-size: 35px;
+  font-weight:lighter;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 .truck-card {
@@ -11,3 +18,4 @@
     margin-top: 53px;
     padding: 20px;
 }
+
