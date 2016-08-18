@@ -19,9 +19,7 @@
     <% if user_signed_in? %>
 
       <!-- Notification -->
-       <%= link_to t(".top_call_to_action", default: "Voir mes commandes"), bookings_path, class: "navbar-wagon-item brand-button-border btn" %>
-      <%= link_to t(".top_call_to_action", default: "Creer un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
-      <%= link_to t(".top_call_to_action", default: "Camions disponibles"), trucks_path, class: "navbar-wagon-item brand-button-border btn" %>
+      <%= link_to t(".top_call_to_action", default: "Ajouter un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-bell"></i>
@@ -38,6 +36,11 @@
             <li>
               <%= link_to "#" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Tableau de bord") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to bookings_path do %>
+                <i class="fa fa-tag"></i> <%= t(".profile", default: "Mes réservations") %>
               <% end %>
             </li>
             <li>
