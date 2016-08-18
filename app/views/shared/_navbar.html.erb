@@ -19,14 +19,16 @@
     <% if user_signed_in? %>
 
       <!-- Notification -->
+      <%= link_to t(".top_call_to_action", default: "Ajouter un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
+          <i class="fa fa-bell"></i>
+          <div class="badge badge-yellow">3</div>
         </div>
       <% end %>
 
       <!-- Profile picture and dropdown -->
+
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -37,6 +39,11 @@
               <% end %>
             </li>
             <li>
+              <%= link_to bookings_path do %>
+                <i class="fa fa-tag"></i> <%= t(".profile", default: "Mes réservations") %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
@@ -44,9 +51,7 @@
           </ul>
         </div>
       </div>
-      <%= link_to t(".top_call_to_action", default: "Voir mes commandes"), bookings_path, class: "navbar-wagon-item brand-button-border btn" %>
-      <%= link_to t(".top_call_to_action", default: "Creer un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
-      <%= link_to t(".top_call_to_action", default: "Camions disponibles"), trucks_path, class: "navbar-wagon-item brand-button-border btn" %>
+     
 
     <% else %>
 
@@ -73,4 +78,6 @@
     </div>
   </div>
 </div>
+
+
 
