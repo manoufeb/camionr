@@ -37,44 +37,38 @@
   </div>
   <div class="wrapper-dark-home">
     <div class="container">
-      <h2 class="text-center">NOBOCAMION</h2>
       <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= asset_path('grue.jpg') %>');">
-            <div class="card-category">Vesoul</div>
-            <div class="card-description">
-              <h2>Pedro's truck</h2>
-              <p>Lovely truck</p>
+      <div class="small-padded text-center">
+      <h3>Camions <b>disponibles</b></h3>
+      </div>
+        <% @trucks.last(4).each do |truck| %>
+          <% if truck.availability %>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <span class="price-icon"></span>
+                        <span class="price-value"><%=truck.price.ceil%>€<span class="month">/jour</span></span>
+                        <h3 class="heading"><%=  truck.gauge %></h3>
+                    </div>
+                    <div class="pricingContent">
+                        <ul>
+                            <li><i class="fa fa-truck"></i><%=truck.category%></li>
+                            <li><i class="fa fa-info-circle"></i><%=truck.description%></li>
+                            <li><i class="fa fa-star" style="color:#F6C667"></i><i class="fa fa-star" style="color:#F6C667"></i><i class="fa fa-star-half-o" style="color:#F6C667"></i>
+                            </li>
+                        </ul>
+                    </div><!-- /  CONTENT BOX-->
+                    <div class="pricingTable-signup">
+                    <%= link_to t(".top_call_to_action", default: "Louer ce truck"), new_truck_booking_path(truck) %>
+                    </div>
+                </div><!-- BUTTON BOX-->
             </div>
-            <img src="images/pedro.jpeg" alt="" class="card-user avatar avatar-large">
-            <a href="#" class="card-link"></a>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= asset_path('toupie.jpg') %>');">
-            <div class="card-category">Vesoul</div>
-            <div class="card-description">
-              <h2>Paulo's truck</h2>
-              <p>Lovely truck</p>
-            </div>
-            <img src="images/pedro.jpg" alt="" class="card-user avatar avatar-large">
-            <a href="#" class="card-link"></a>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= asset_path('benne.jpg') %>');">
-            <div class="card-category">Vesoul</div>
-            <div class="card-description">
-              <h2>Manou's truck</h2>
-              <p>Lovely truck</p>
-            </div>
-            <img src="images/pedro.jpg" alt="" class="card-user avatar avatar-large">
-            <a href="#" class="card-link"></a>
-          </div>
-        </div>
+            <% else %>
+              <h2>Il n'y a pas de camion disponible</h2>
+            <% end %>
+          <% end %>
       </div>
     </div>
-  </div>
   <div class="text-center padded" id="newsletter">
     <h2>Besoin d'aide ?</h2>
     <p>Renseignez votre e-mail pour etre contacté</p>
