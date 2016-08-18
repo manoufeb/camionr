@@ -3,26 +3,27 @@
   <div class="container">
       <div class="row">
       <div class="small-padded">
-      <h1>Camions <b>disponibles</b></h1>
+      <h1>Vos <b>Réservations</b></h1>
       </div>
-        <% @trucks.each do |truck| %>
-          <% if truck.availability %>
+        <% @bookings.each do |booking| %>
+          <% if booking.truck.availability %>
             <div class="col-md-3 col-sm-6">
                 <div class="pricingTable">
                     <div class="pricingTable-header">
                         <span class="price-icon"></span>
-                        <span class="price-value"><%=truck.price.ceil%>€<span class="month">/jour</span></span>
-                        <h3 class="heading"><%=  truck.gauge %></h3>
+                        <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
+                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
                     </div>
                     <div class="pricingContent">
                         <ul>
-                            <li><i class="fa fa-check"></i><%=truck.category%></li>
-                            <li><i class="fa fa-check"></i><%=truck.description%></li>
-                            <li><i class="fa fa-star" style="color:#F6C667"></i><i class="fa fa-star" style="color:#F6C667"></i><i class="fa fa-star" style="color:#F6C667"></i></li>
+                            <li><i class="fa fa-check"></i><%=booking.truck.category%></li>
+                            <li><i class="fa fa-check"></i><%=booking.truck.description%></li>
+                            <li><i class="fa fa-check"></i><%=booking.location%></li>
+                            <li>Du <%= booking.starting_date.strftime("%d/%m/%Y") %> Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
                         </ul>
                     </div><!-- /  CONTENT BOX-->
-                    <div class="pricingTable-signup">
-                    <%= link_to t(".top_call_to_action", default: "Louer ce truck"), new_truck_booking_path(truck) %>
+                    <div class="status">
+                    <p>En attente</p>
                     </div>
                 </div><!-- BUTTON BOX-->
             </div>
@@ -33,36 +34,3 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <% @bookings.each do |booking| %>
-          <div class="product">
-            <div class='product-body'>
-              <h3><%= booking.truck.category%></h3>
-              <p><%= booking.description%></p>
-              <p><%= booking.location%></p>
-
-            </div>
-            <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li><p>Prix:<%= booking.truck.price %></p></li>
-            </ul>
-            <div class="card-body">
-              from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
-            </div>
-          </div>
-      <% end %>
-    </div>
-  </div>
-</div>
