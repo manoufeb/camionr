@@ -2,9 +2,9 @@
     <%= f.error_notification %>
     <div class="form-inputs">
       <%= f.input :category, label: 'Catégorie', prompt:'Choisir une Catégorie', collection: Truck::CATEGORIES %>
-      <%= f.input :gauge, label: 'Type',prompt:'Choisir un Type', collection: Truck::GAUGE %>
-      <%= f.input :description, label: 'Description', placeholder: 'Camion tout neuf' %>
-      <%= f.input :numberplate, label: 'Immatriculation', placeholder: 'BU-865-75'%>
+      <%= f.input :gauge, label: 'Type', prompt:'Choisir un Type', collection: Truck::GAUGE %>
+      <%= f.input :description, label: 'Description', placeholder: 'Camion tout neuf'%>
+      <%= f.input :numberplate, label: 'Immatriculation', placeholder: 'BU-865-75', input_html: { "data-tooltip" => true, :title => "Renseignez la plaque d'immatriculation du votre camion" }%>
       <%= f.input :price, label: 'Prix', placeholder: '300'%>
     </div>
 
