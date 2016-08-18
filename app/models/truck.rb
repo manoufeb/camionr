@@ -5,6 +5,5 @@ class Truck < ApplicationRecord
   GAUGE = %w(Toupie Grue Benne Bi-Benne)
 
   validates :gauge, :category, :price, presence: true
-
   validates :numberplate, presence: true, uniqueness: true
 end
