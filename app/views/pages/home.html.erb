@@ -11,30 +11,6 @@
      <%= link_to t(".top_call_to_action", default: "Louer un camion"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
   </div>
 </div>
-  <div class="container text-center padded features">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <img src="<%= asset_path('truck.png') %>" alt="">
-        <h2>Trouvez vous un beau camion</h2>
-        <p>Le plus gros catalogue de camion du village !</p>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <img src="<%= asset_path('driver.png') %>" alt="">
-        <h2>Chauffeur à la demande</h2>
-        <p>Nos Pedro sont disponible pour toutes missions !</p>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <img src="<%= asset_path('pay.png') %>" alt="">
-        <h2>Payez en ligne</h2>
-        <p>Plus de problème de comptabilité.</p>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <img src="<%= asset_path('booking.png') %>" alt="">
-        <h2>Centralisation de vos commandes</h2>
-        <p>Gerer efficacement votre chantier.</p>
-      </div>
-    </div>
-  </div>
   <div class="wrapper-dark-home">
     <div class="container">
       <div class="row">
@@ -69,30 +45,92 @@
           <% end %>
       </div>
     </div>
-  <div class="text-center padded" id="newsletter">
-    <h2>Besoin d'aide ?</h2>
-    <p>Renseignez votre e-mail pour etre contacté</p>
-    <form class="form-inline">
-      <input type="email" placeholder="pedro@camionr.pt" class="form-control">
-      <input type="submit" value="Souscrire" class="btn btn-primary btn-bordered btn-bordered-primary">
-    </form>
+<div class="wrapper-yellow">
+  <div class="container text-center padded features">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <img src="<%= asset_path('truck.png') %>" alt="">
+        <h2>Trouver un camion</h2>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <img src="<%= asset_path('driver.png') %>" alt="">
+        <h2>Chauffeur à la demande</h2>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <img src="<%= asset_path('pay.png') %>" alt="">
+        <h2>Payez en ligne</h2>
+      </div>
+    </div>
   </div>
-  <div class="footer">
-    <ul class="text-center list-inline">
-      <li>
-        <a href="https://www.youtube.com/watch?v=iU9RBvJDD70"><i class="fa fa-youtube"></i></a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/The-BEST-Truck-302577509758593/"><i class="fa fa-facebook"></i></a>
-      </li>
-      <li>
-        <a href="https://twitter.com/volvotrucks"><i class="fa fa-twitter"></i></a>
-      </li>
-      <li>
-        <a href="https://www.instagram.com/freightlinertrucks/?hl=fr"><i class="fa fa-instagram"></i></a>
-      </li>
-      <br>
-      En route Pedro !
-    </ul>
   </div>
+  <div class="footer-4cln">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-3 col-xs-6">
+                <h6>L'entreprise</h6>
+                  <ul class="list-unstyled">
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">L'équipe</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-3 col-xs-6">
+                  <h6>Infos</h6>
+                  <ul class="list-unstyled">
+                    <li><a href="#">Paiement</a></li>
+                    <li><a href="#">Légales</a></li>
+                    <li><a href="#">Avantages</a></li>
+                    <li><a href="#">Support</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-3 col-xs-6">
+                  <h6>Aides</h6>
+                  <ul class="list-unstyled">
+                    <li><a href="#">Réduction</a></li>
+                    <li><a href="#">Pourquoi?</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Articles</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-3 col-xs-6">
+                  <h6>Blague</h6>
+                  <ul class="list-unstyled">
+                    <li><a href="#">Personne</a></li>
+                    <li><a href="#">ne lira</a></li>
+                    <li><a href="#">mes</a></li>
+                    <li><a href="#">lignes</a></li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-4">
+            <h6>Une question?</h6>
+            <form role="form">
+              <div class="input-group">
+                <input type="email" class="form-control footernews" placeholder="Votre question">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button">Envoyer</button>
+                </span>
+              </div>
+              <span class="help-block">Réponse très rapide !</span>
+            </form>
+        </div>
+    </div>
+    <hr>
+      <div class="footer-4cln-bar">
+        <span class="phone"><i class="fa fa-phone"></i>01 39 51 69 87</span>
+        <span class="email"><i class="fa fa-envelope"></i> <a href="Pedro@camionr.com">pedro@camionr.com</a></span>
+        <div class="footer-social">
+            <a class="social-facebook" href="#"><i class="fa fa-facebook"></i></a>
+            <a class="social-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+            <a class="social-twitter" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="social-google" href="#"><i class="fa fa-google-plus"></i></a>
+        </div>
+        <span class="address">Copyright &copy; Team Pedro<br/> 16 Villa Gaudelet 75011 Paris</span>
+      </div>
+  </div>
+</div>
 </body>

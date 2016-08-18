@@ -6,10 +6,19 @@
   margin: 0;
   text-align: center;
   color: white;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 73px;
+  right: 0px;
 }
 .alert-info {
-  background: $green;
+  background: #70C56E;
+  border-radius: 4px;
+  opacity: 0.5;
 }
 .alert-warning {
-  background: $red;
+  background: #FF2F3F;
+  border-radius: 4px;
+  opacity: 0.5;
 }

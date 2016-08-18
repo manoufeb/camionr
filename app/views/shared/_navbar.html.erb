@@ -20,10 +20,10 @@
 
       <!-- Notification -->
       <%= link_to t(".top_call_to_action", default: "Ajouter un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <%= link_to pending_bookings_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-bell"></i>
-          <div class="badge badge-yellow">3</div>
+          <div class="badge badge-yellow">2</div>
         </div>
       <% end %>
 
@@ -80,9 +80,27 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+              <%= link_to bookings_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Mes réservations") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to bookings_path do %>
+                <i class="fa fa-tag"></i> <%= t(".profile", default: "Mes annonces") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-truck"></i> <%= t(".profile", default: "Mes Camions") %>
+              <% end %>
+            </li>
+            <li>
+
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Deconnexion") %>
+              <% end %>
+            </li>
       </ul>
     </div>
   </div>
