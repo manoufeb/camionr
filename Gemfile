@@ -17,6 +17,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'rails-assets-bootstrap-datepicker', source: 'https://rails-assets.org'
+gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
 
 
 group :development, :test do

@@ -10,6 +10,18 @@
   justify-content: space-between;
 }
 
+.trucks-index {
+  .navbar-wagon {
+    background: #333E50;
+  }
+}
+
+.bookings-index {
+  .navbar-wagon {
+    background: #333E50;
+  }
+}
+
 .registrations-new {
   .navbar-wagon {
     background: #333E50;
@@ -132,7 +144,7 @@
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
+  // box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
 .navbar-wagon-dropdown-menu li > a {
@@ -145,7 +157,7 @@
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  color: #F6C667 !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';

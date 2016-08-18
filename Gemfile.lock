@@ -133,7 +133,10 @@ GEM
       sprockets-rails (>= 2.0.0)
     rails-assets-bootstrap-datepicker (1.6.4)
       rails-assets-jquery (>= 1.7.1)
+    rails-assets-es6-promise (3.2.2)
     rails-assets-jquery (3.1.0)
+    rails-assets-sweetalert2 (4.1.7)
+      rails-assets-es6-promise
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6.0)
@@ -207,6 +210,7 @@ DEPENDENCIES
   puma
   rails (= 5.0.0.1)
   rails-assets-bootstrap-datepicker!
+  rails-assets-sweetalert2!
   redis
   sass-rails
   simple_form
