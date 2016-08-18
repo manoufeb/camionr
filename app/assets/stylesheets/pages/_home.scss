@@ -26,10 +26,10 @@
   color: #ff8c00;
 }
 
-.wrapper-dark-blue{
+.wrapper-dark-home {
   background: #333E50;
   color: white;
-  min-height: 50vh;
+  min-height: calc(50vh - 70px);
 }
 
 .card {
