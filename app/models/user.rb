@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :trucks
   has_many :bookings
+  mount_uploader :avatar, AvatarUploader
 end
