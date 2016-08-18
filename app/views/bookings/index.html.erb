@@ -1,22 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <% @bookings.each do |booking| %>
-          <div class="product">
-            <div class='product-body'>
-              <h3><%= booking.truck.category%></h3>
-              <p><%= booking.description%></p>
-              <p><%= booking.location%></p>
-
+<div class="wrapper-dark-blue">
+<div class="text-center">
+  <div class="container">
+      <div class="row">
+      <div class="small-padded">
+      <h1>Vos <b>Réservations</b></h1>
+      </div>
+        <% @bookings.each do |booking| %>
+          <% if booking.truck.availability %>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <span class="price-icon"></span>
+                        <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
+                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                    </div>
+                    <div class="pricingContent">
+                        <ul>
+                            <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
+                            <li><i class="fa fa-info-circle"></i><%=booking.truck.description%></li>
+                            <li><i class="fa fa-map-marker"></i><%=booking.location%></li>
+                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %> Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
+                            fa fa-calendar
+                        </ul>
+                    </div><!-- /  CONTENT BOX-->
+                    <div class="status">
+                    <p>En attente</p>
+                    </div>
+                </div><!-- BUTTON BOX-->
             </div>
-            <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li><p>Prix:<%= booking.truck.price %></p></li>
-            </ul>
-            <div class="card-body">
-              from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
+            <% else %>
+              <h2>Il n'y a pas de camion disponible</h2>
+            <% end %>
+          <% end %>
+      </div>
+      <div class="text-center padded">
+              <%= link_to t(".top_call_to_action", default: "Réserver d'autres camions"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
             </div>
-          </div>
-      <% end %>
     </div>
   </div>
-</div>
