@@ -9,12 +9,39 @@
      de véhicules de chantier</h1>
      <h1>entre <b>professionnels</b> du BTP</h1>
      <%= link_to t(".top_call_to_action", default: "Louer un camion"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
+<!--       <a class="js-scrollTo" href="#scrollTo">
+        <div class="mouse">
+          <div class="scroll">
+          </div>
+        </div>
+      </a> -->
+       <a class="js-scrollTo" href="#scrollTo">
+       <div class="mouse-wrap">
+         <div class="mouse">
+           <div class="frame">
+             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 54.9 91" style="enable-background:new 0 0 54.9 91;" xml:space="preserve">
+               <path linejoin="round" stroke-linecap="round" stroke-miterlimit="10" d="M27.4,3.6L27.4,3.6C14.2,3.6,3.5,14.3,3.5,27.5v36c0,13.2,10.7,23.9,23.9,23.9h0c13.2,0,23.9-10.7,23.9-23.9v-36C51.4,14.3,40.7,3.6,27.4,3.6z"></path>
+             </svg>
+           </div>
+           <div class="mouse-left">
+             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.4 91" style="enable-background:new 0 0 27.4 91;" xml:space="preserve">
+               <path linejoin="round" stroke-linecap="round" stroke-miterlimit="10" d="M27.4,87.5L27.4,87.5c-13.2,0-23.9-10.7-23.9-23.9v-36c0-13.2,10.7-23.9,23.9-23.9h0" class="Animate-Draw"></path>
+             </svg>
+           </div>
+           <div class="mouse-right">
+             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.4 91" style="enable-background:new 0 0 27.4 91;" xml:space="preserve">
+               <path linejoin="round" stroke-linecap="round" stroke-miterlimit="10" d="M0,3.6L0,3.6c13.2,0,23.9,10.7,23.9,23.9v36c0,13.2-10.7,23.9-23.9,23.9h0" class="Animate-Draw"></path>
+             </svg>
+           </div>
+         </div>
+       </div>
+      </a>
   </div>
 </div>
   <div class="wrapper-dark-home">
     <div class="container">
       <div class="row">
-      <div class="small-padded text-center">
+      <div class="small-padded text-center" id="scrollTo">
       <h3>Camions <b>disponibles</b></h3>
       </div>
         <% @trucks.last(4).each do |truck| %>
@@ -133,4 +160,15 @@
       </div>
   </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.js-scrollTo').on('click', function() { // Au clic sur un élément
+      var page = $(this).attr('href'); // Page cible
+      var speed = 750; // Durée de l'animation (en ms)
+      $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+      return false;
+    });
+  });
+</script>
 </body>
