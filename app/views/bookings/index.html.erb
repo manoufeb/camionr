@@ -23,17 +23,17 @@
                             <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
                         </ul>
                     </div><!-- /  CONTENT BOX-->
-                    <% if booking.status == "pending" %>
+                    <% if booking.status == "En attente" %>
                     <div class="status-pending">
                     <p><%= booking.status  %></p>
                     </div>
-                    <% elsif booking.status == "confirmed"  %>
+                    <% elsif booking.status == "Confirmé"  %>
                     <div class="status-confirmed">
                     <p><i class="fa fa-check style="color:#70C56E></i> <%= booking.status  %></p>
                     </div>
                     <% else %>
                     <div class="status-refused">
-                    <p> <i class="fa fa-times style="color:#F60E33></i><%= booking.status  %></p>
+                    <p> <i class="fa fa-times style="color:#F60E33></i> <%= booking.status  %></p>
                     </div>
                     <% end %>
                 </div><!-- BUTTON BOX-->

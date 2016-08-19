@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'status_bookings', to: 'bookings#status_bookings'
 
   patch 'bookings/:id/validate' => 'bookings#validate', as: :validate_booking
+  patch 'bookings/:id/refuse' => 'bookings#refuse', as: :refuse_booking
 end
