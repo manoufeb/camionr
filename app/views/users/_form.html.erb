@@ -1,17 +1,25 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
+<div class="wrapper-dark-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4 padded">
+        <%= simple_form_for(@user) do |f| %>
+          <%= f.error_notification %>
 
-<div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :company, required: true %>
-    <%= f.input :siret, required: true %>
-    <%= f.input :address, required: true %>
-    <%= f.input :avatar %>
-    <%= f.input :avatar_cache, as: :hidden %>
-  </div>
+        <div class="form-inputs">
+            <%= f.input :name, autofocus: true, placeholder: "Jean-pedro Delavegas" %>
+            <%= f.input :company, required: true, placeholder: "Pedro's company" %>
+            <%= f.input :siret, required: true, placeholder: "732 829 320 00074" %>
+            <%= f.input :address, required: true, placeholder: "1, rue de Lisbonne" %>
+            <%= f.input :avatar %>
+            <%= f.input :avatar_cache, as: :hidden %>
+          </div>
 
-  <div class="form-actions">
-    <%= f.submit "Save changes", class: "btn btn-success" %>
-    <link>
+          <div class="form-actions text-center small-padded">
+            <%= f.submit "Save changes", class: "btn brand-button" %>
+            <link>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>

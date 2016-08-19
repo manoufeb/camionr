@@ -10,7 +10,7 @@
             <%= f.input :password, required: false %>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
-          <div class="form-actions text-center">
+          <div class="form-actions text-center small-padded">
             <%= f.button :submit, "Log in", class: 'brand-button' %>
           </div>
         <% end %>
