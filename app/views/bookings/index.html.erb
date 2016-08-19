@@ -12,15 +12,15 @@
                     <div class="pricingTable-header">
                         <span class="price-icon"></span>
                         <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
-                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                        <h3 class="heading"><%= booking.truck.gauge %></h3>
                     </div>
                     <div class="pricingContent">
                         <ul>
                             <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
                             <li><i class="fa fa-info-circle"></i><%=booking.truck.description%></li>
                             <li><i class="fa fa-map-marker"></i><%=booking.location%></li>
-                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %> Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
-                            fa fa-calendar
+                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %></li> 
+                            <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
                         </ul>
                     </div><!-- /  CONTENT BOX-->
                     <div class="status">
