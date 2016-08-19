@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :trucks
-  has_many :truck_bookings, through: :trucks, :source => :bookings
-  has_many :bookings
+  has_many :trucks, dependent: :destroy
+  has_many :truck_bookings, through: :trucks, :source => :bookings, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
 end

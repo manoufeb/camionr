@@ -43,7 +43,8 @@ class BookingsController < ApplicationController
     @booking.truck = @truck
     @booking.status = "En attente"
     if @booking.save
-      redirect_to status_bookings_path #user_path(current_user)
+      redirect_to bookings_path #user_path(current_user)
+
     else
       render 'new'
     end
