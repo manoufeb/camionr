@@ -10,6 +10,7 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'redis'
 gem 'cloudinary', '1.1.0'
 gem 'carrierwave'
+gem "geocoder"
 
 gem 'sass-rails'
 gem 'jquery-rails'
