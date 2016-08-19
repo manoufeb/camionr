@@ -6,7 +6,7 @@
       <h1>Camions <b>disponibles</b></h1>
       </div>
         <% @trucks.each do |truck| %>
-          <% if truck.availability %>
+          <% if truck.availability  %>
             <div class="col-md-3 col-sm-6">
                 <div class="pricingTable">
                     <div class="pricingTable-header">
@@ -22,8 +22,40 @@
                             </li>
                         </ul>
                     </div><!-- /  CONTENT BOX-->
-                    <div class="pricingTable-signup">
-                    <%= link_to t(".top_call_to_action", default: "Louer ce truck"), new_truck_booking_path(truck) %>
+                    <div class='small-padded-alt'>
+                    <!-- Button trigger modal -->
+                    <button type="button", class="brand-button" data-toggle="modal" data-target="#myModal">
+                      Louer ce truck
+                    </button>
+                      <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Créer une Réservation</h4>
+                          </div>
+                          <div class="modal-body">
+                            <%= simple_form_for([truck, @booking]) do |f| %>
+                            <%= f.error_notification %>
+
+                            <div class="form-inputs">
+                              <%= f.input :starting_date, as: :string,label: "Date de Début", input_html: { class:"datepicker" } %>
+                              <%= f.input :ending_date, as: :string, input_html: { class:"datepicker" } %>
+                              <%= f.input :location %>
+                              <%= f.input :description %>
+                            </div>
+
+                            <div class="form-actions">
+                              <%= f.button :submit, class:"brand-button", hint: "#{link_to 'Book', truck_bookings_path(truck)}"%>
+
+                            </div>
+                    <% end %>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                 </div><!-- BUTTON BOX-->
             </div>

@@ -23,9 +23,19 @@
                             <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
                         </ul>
                     </div><!-- /  CONTENT BOX-->
-                    <div class="status">
-                    <p>En attente</p>
+                    <% if booking.status == "pending" %>
+                    <div class="status-pending">
+                    <p><%= booking.status  %></p>
                     </div>
+                    <% elsif booking.status == "confirmed"  %>
+                    <div class="status-confirmed">
+                    <p><i class="fa fa-check style="color:#70C56E></i> <%= booking.status  %></p>
+                    </div>
+                    <% else %>
+                    <div class="status-refused">
+                    <p> <i class="fa fa-times style="color:#F60E33></i><%= booking.status  %></p>
+                    </div>
+                    <% end %>
                 </div><!-- BUTTON BOX-->
             </div>
             <% else %>
@@ -37,4 +47,5 @@
               <%= link_to t(".top_call_to_action", default: "Réserver d'autres camions"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
             </div>
     </div>
+  </div>
   </div>

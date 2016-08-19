@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :trucks do
     resources :bookings
   end
+  get    "my_trucks",      to: "trucks#my_trucks"
   resources :bookings, only: [:index] do
   end
-  get 'pending_bookings', to: 'bookings#pending_bookings'
+  get 'status_bookings', to: 'bookings#status_bookings'
 
   patch 'bookings/:id/validate' => 'bookings#validate', as: :validate_booking
 end

@@ -20,7 +20,7 @@
 
       <!-- Notification -->
       <%= link_to t(".top_call_to_action", default: "Ajouter un camion"), new_truck_path, class: "navbar-wagon-item brand-button-border btn" %>
-      <%= link_to pending_bookings_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+      <%= link_to status_bookings_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-bell"></i>
           <div class="badge badge-yellow">2</div>
@@ -32,7 +32,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.avatar.url %>
-            <%= cl_image_tag current_user.avatar, height: 40, width: 40, crop: :fit, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag current_user.avatar, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <%= image_tag "http://placehold.it/32x32", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
           <% end %>
@@ -44,12 +44,12 @@
               <% end %>
             </li>
             <li>
-              <%= link_to pending_bookings_path do %>
+              <%= link_to status_bookings_path do %>
                 <i class="fa fa-tag"></i> <%= t(".profile", default: "Mes annonces") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to my_trucks_path do %>
                 <i class="fa fa-truck"></i> <%= t(".profile", default: "Mes Camions") %>
               <% end %>
             </li>

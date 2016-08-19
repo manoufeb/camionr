@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "confirmed"
     if @booking.save
-      redirect_to pending_bookings_path
+      redirect_to status_bookings_path
     else
       render 'pending_bookings'
     end
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
     @booking.truck = @truck
     @booking.status = "pending"
     if @booking.save
-      redirect_to pending_bookings_path #user_path(current_user)
+      redirect_to bookings_path #user_path(current_user)
     else
       render 'new'
     end
