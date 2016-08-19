@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% @pending_bookings_as_owner.each do |booking| %>
+        <div class="product">
+          <div class='product-body'>
+          </div>
+          <ul class="list-inline product-controls hidden-sm hidden-xs">
+            <li><p><%= booking.user.name %></p></li>
+            <li><p><%= booking.truck.price %></p></li>
+            <li><p><%= booking.location %></p></li>
+            <li><p><%= booking.status %></p></li>
+          </ul>
+          <div class="card-body">
+            from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
+            <% if booking.status == "En attente" %>
+            <%= link_to 'Valider', validate_booking_path(booking), method: :patch, class: "btn btn-primary" %>
+            <%= link_to 'Refuser', refuse_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12">
+      Nombre de demandes confirmées = <%= @confirmed_bookings_as_owner.count %>
+      <% @confirmed_bookings_as_owner.each do |booking| %>
+        <div class="product">
+          <div class='product-body'>
+          </div>
+          <ul class="list-inline product-controls hidden-sm hidden-xs">
+            <li><p><%= booking.user.name %></p></li>
+            <li><p><%= booking.truck.price %></p></li>
+            <li><p><%= booking.location %></p></li>
+            <li><p><%= booking.status %></p></li>
+          </ul>
+          <div class="card-body">
+            from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
+            <%= link_to 'Refuser', refuse_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12">
+    <% @refused_bookings.each do |booking| %>
+      <div class="product">
+        <div class='product-body'>
+        </div>
+        <ul class="list-inline product-controls hidden-sm hidden-xs">
+          <li><p><%= booking.user.name %></p></li>
+          <li><p><%= booking.truck.price %></p></li>
+          <li><p><%= booking.location %></p></li>
+          <li><p><%= booking.status %></p></li>
+        </ul>
+        <div class="card-body">
+          from <%= booking.starting_date.strftime("%d/%m/%Y") %> to <%= booking.ending_date.strftime("%d/%m/%Y") %>
+          <%= link_to 'Valider', validate_booking_path(booking), method: :patch, class: "btn btn-primary" %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
