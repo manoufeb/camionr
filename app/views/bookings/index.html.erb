@@ -12,20 +12,30 @@
                     <div class="pricingTable-header">
                         <span class="price-icon"></span>
                         <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
-                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                        <h3 class="heading"><%= booking.truck.gauge %></h3>
                     </div>
                     <div class="pricingContent">
                         <ul>
                             <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
                             <li><i class="fa fa-info-circle"></i><%=booking.truck.description%></li>
                             <li><i class="fa fa-map-marker"></i><%=booking.location%></li>
-                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %> Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
-                            fa fa-calendar
+                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %></li> 
+                            <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
                         </ul>
                     </div><!-- /  CONTENT BOX-->
-                    <div class="status">
-                    <p>En attente</p>
+                    <% if booking.status == "En attente" %>
+                    <div class="status-pending">
+                    <p><%= booking.status  %></p>
                     </div>
+                    <% elsif booking.status == "Confirmé"  %>
+                    <div class="status-confirmed">
+                    <p><i class="fa fa-check style="color:#70C56E></i> <%= booking.status  %></p>
+                    </div>
+                    <% else %>
+                    <div class="status-refused">
+                    <p> <i class="fa fa-times style="color:#F60E33></i> <%= booking.status  %></p>
+                    </div>
+                    <% end %>
                 </div><!-- BUTTON BOX-->
             </div>
             <% else %>
@@ -35,7 +45,7 @@
       </div>
       <div class="text-center small-padded">
               <%= link_to t(".top_call_to_action", default: "Réserver d'autres camions"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
-              <%= link_to t(".top_call_to_action", default: "voir les demandes de réservation"), status_bookings_path, class: "navbar-wagon-item brand-button btn" %>
             </div>
     </div>
+  </div>
   </div>

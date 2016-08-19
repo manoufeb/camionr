@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :trucks do
     resources :bookings
   end
+  get    "my_trucks",      to: "trucks#my_trucks"
   resources :bookings, only: [:index] do
   end
   get 'status_bookings', to: 'bookings#status_bookings'
