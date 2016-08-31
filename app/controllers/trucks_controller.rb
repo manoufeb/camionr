@@ -3,9 +3,14 @@ class TrucksController < ApplicationController
 
   def index
     @trucks = Truck.all
+    @booking = Booking.new
   end
 
   def show
+  end
+
+  def my_trucks
+   @trucks = current_user.trucks
   end
 
   def new
@@ -16,7 +21,7 @@ class TrucksController < ApplicationController
     @truck = Truck.new(truck_params)
     @truck.user = current_user
     if @truck.save
-      redirect_to truck_path(@truck)
+      redirect_to my_trucks_path
     else
       render "new"
     end
@@ -32,7 +37,7 @@ class TrucksController < ApplicationController
 
   def destroy
     @truck.delete
-    redirect_to trucks_path
+    redirect_to my_trucks_path
   end
 
   private
