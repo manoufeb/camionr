@@ -3,6 +3,14 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
+
+    @bookings = Booking.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@bookings) do |booking, marker|
+      marker.lat booking.latitude
+      marker.lng booking.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      end
   end
 
   def status_bookings
