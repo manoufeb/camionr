@@ -2,32 +2,43 @@ class BookingsController < ApplicationController
   before_action :set_truck, only: [ :new, :create, :edit, :update, :destroy, :show ]
 
   def index
-    @confirmed_bookings = current_user.truck_bookings.where(status: "confirmed")
     @bookings = Booking.all
+
+    @bookings = Booking.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@bookings) do |booking, marker|
+      marker.lat booking.latitude
+      marker.lng booking.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      end
   end
 
-  def pending_bookings
-    @pending_bookings = current_user.truck_bookings.where(status: "pending")
-    @pending_bookings_as_customer = current_user.bookings.where(status: "pending")
-    #booking qui sont pending et qui sont sur mes trucks
-  end
+  def status_bookings
+    @pending_bookings_as_owner = current_user.truck_bookings.where(status: "En attente")
+    @confirmed_bookings_as_owner = current_user.truck_bookings.where(status: "Confirmé")
 
-  def refused_bookings
-    @refused_bookings = current_user.truck_bookings.where(status: "refused")
+    @refused_bookings = current_user.truck_bookings.where(status: "Refusé")
+    # @sum_confirmed_price = @confirmed_bookings_as_owner
   end
 
   def validate
     @booking = Booking.find(params[:id])
-    @booking.status = "confirmed"
+    @booking.status = "Confirmé"
     if @booking.save
-      redirect_to pending_bookings_path
+      redirect_to status_bookings_path
     else
-      render 'pending_bookings'
+      render 'status_bookings'
     end
   end
 
-  def refuse_booking
-    @booking.status = "refused"
+  def refuse
+    @booking = Booking.find(params[:id])
+    @booking.status = "Refusé"
+    if @booking.save
+      redirect_to status_bookings_path
+    else
+      render 'status_bookings'
+    end
   end
 
   def new
@@ -38,9 +49,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.truck = @truck
-    @booking.status = "pending"
+    @booking.status = "En attente"
     if @booking.save
-      redirect_to pending_bookings_path #user_path(current_user)
+      redirect_to bookings_path #user_path(current_user)
+
     else
       render 'new'
     end

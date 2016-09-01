@@ -1,40 +1,79 @@
 <div class="wrapper-dark-blue">
-<div class="text-center">
-  <div class="container">
+  <div class="text-center">
+    <div class="container">
       <div class="row">
-      <div class="small-padded">
-      <h1>Vos <b>Réservations</b></h1>
-      </div>
-        <% @bookings.each do |booking| %>
-          <% if booking.truck.availability %>
-            <div class="col-md-3 col-sm-6">
+        <div class="small-padded">
+          <h1>Vos <b>Réservations</b></h1>
+        </div>
+          <% @bookings.each do |booking| %>
+            <% if booking.truck.availability %>
+              <div class="col-md-3 col-sm-6">
                 <div class="pricingTable">
-                    <div class="pricingTable-header">
-                        <span class="price-icon"></span>
-                        <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
-                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                  <div class="pricingTable-header">
+                    <span class="price-icon"></span>
+                    <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
+                    <h3 class="heading"><%= booking.truck.gauge %></h3>
+                  </div>
+                  <div class="pricingContent">
+                    <ul>
+                      <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
+                      <li><i class="fa fa-info-circle"></i><%=booking.truck.description%></li>
+                      <li><i class="fa fa-map-marker"></i><%=booking.location%></li>
+                      <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %></li>
+                      <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
+                    </ul>
+                  </div>
+                  <% if booking.status == "En attente" %>
+                    <div class="status-pending">
+                      <p><%= booking.status  %></p>
                     </div>
-                    <div class="pricingContent">
-                        <ul>
-                            <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
-                            <li><i class="fa fa-info-circle"></i><%=booking.truck.description%></li>
-                            <li><i class="fa fa-map-marker"></i><%=booking.location%></li>
-                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %> Au <%= booking.ending_date.strftime("%d/%m/%Y") %></li>
-                            fa fa-calendar
-                        </ul>
-                    </div><!-- /  CONTENT BOX-->
-                    <div class="status">
-                    <p>En attente</p>
+                  <% elsif booking.status == "Confirmé"  %>
+                    <div class="status-confirmed">
+                      <p><i class="fa fa-check style="color:#70C56E></i> <%= booking.status  %></p>
                     </div>
-                </div><!-- BUTTON BOX-->
-            </div>
+                  <% else %>
+                    <div class="status-refused">
+                      <p> <i class="fa fa-times style="color:#F60E33></i> <%= booking.status  %></p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             <% else %>
               <h2>Il n'y a pas de camion disponible</h2>
             <% end %>
           <% end %>
+
+        <div class="text-center small-padded">
+          <%= link_to t(".top_call_to_action", default: "Réserver d'autres camions"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
+        </div>
       </div>
-      <div class="text-center small-padded">
-              <%= link_to t(".top_call_to_action", default: "Réserver d'autres camions"), trucks_path, class: "navbar-wagon-item brand-button btn" %>
-            </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 padded">
+      <div id="map" style="width: 100%; height: 500px; border: 5px solid black">
+        <% content_for(:after_js) do %>
+          <script>
+
+            // $(document).on('ready', function() {
+              console.log("maps");
+              var handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function() {
+                markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                if (markers.length == 0) {
+                  handler.getMap().setZoom(2);
+                } else if (markers.length == 1) {
+                  handler.getMap().setZoom(14);
+                }
+              });
+          </script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

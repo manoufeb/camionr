@@ -1,0 +1,108 @@
+
+<div class="wrapper-dark-blue bottom-space">
+<div class="text-center">
+  <div class="container">
+      <div class="row">
+      <h1>Vos <b>annonces</b></h1>
+      <% @pending_bookings_as_owner.each do |booking| %>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <span class="price-icon"></span>
+                        <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
+                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                    </div>
+                    <div class="pricingContent">
+                        <ul>
+                            <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
+                            <li><i class="fa fa-user"></i><%=booking.user.name%></li>
+                            <li><i class="fa fa-map" style="color:#F6C667"></i><%= booking.location %>
+                            </li>
+                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %>
+                            </li>
+                            <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %>
+                            </li>
+                            <% if booking.description.empty? == false %>
+                            <li><i class="fa fa-info-circle"></i><%= booking.description %>
+                            </li>
+                            <li><i class="fa fa-tasks"></i><b><%= booking.status %></b>
+                          </li>
+                            <% end %>
+                        </ul>
+                    </div><!-- /  CONTENT BOX-->
+                    <div class="pricingTable-signup">
+                    <% if booking.status == "En attente" %>
+                    <%= link_to 'Valider', validate_booking_path(booking), method: :patch, class: "btn btn-success" %>
+                    <%= link_to 'Refuser', refuse_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+                    <% end %>
+                  </div>
+                </div><!-- BUTTON BOX-->
+            </div>
+          <% end %>
+          <% @confirmed_bookings_as_owner.each do |booking| %>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <span class="price-icon"></span>
+                        <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
+                        <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                    </div>
+                    <div class="pricingContent">
+                        <ul>
+                            <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
+                            <li><i class="fa fa-user"></i><%=booking.user.name%></li>
+                            <li><i class="fa fa-map" style="color:#F6C667"></i><%= booking.location %>
+                            </li>
+                            <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %>
+                            </li>
+                            <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %>
+                            </li>
+                            <% if booking.description.empty? == false %>
+                            <li><i class="fa fa-info-circle"></i><%= booking.description %>
+                            </li>
+                            <li><i class="fa fa-tasks"></i><b><%= booking.status %></b>
+                          </li>
+                            <% end %>
+                        </ul>
+                      </div><!-- /  CONTENT BOX-->
+                    <div class="small-padded-alt">
+                    <%= link_to 'Refuser', refuse_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+                  </div>
+                </div><!-- BUTTON BOX-->
+              </div>
+          <% end %>
+          <% @refused_bookings.each do |booking| %>
+          <div class="col-md-3 col-sm-6">
+              <div class="pricingTable">
+                  <div class="pricingTable-header">
+                      <span class="price-icon"></span>
+                      <span class="price-value"><%=booking.truck.price.ceil%>€<span class="month">/jour</span></span>
+                      <h3 class="heading"><%=  booking.truck.gauge %></h3>
+                  </div>
+                  <div class="pricingContent">
+                      <ul>
+                          <li><i class="fa fa-truck"></i><%=booking.truck.category%></li>
+                          <li><i class="fa fa-user"></i><%=booking.user.name%></li>
+                          <li><i class="fa fa-map" style="color:#F6C667"></i><%= booking.location %>
+                          </li>
+                          <li><i class="fa fa-calendar"></i>Du <%= booking.starting_date.strftime("%d/%m/%Y") %>
+                          </li>
+                          <li><i class="fa fa-calendar"></i>Au <%= booking.ending_date.strftime("%d/%m/%Y") %>
+                          </li>
+                          <% if booking.description.empty? == false %>
+                          <li><i class="fa fa-info-circle"></i><%= booking.description %>
+                          </li>
+                          <li><b><i class="fa fa-tasks"></i><%= booking.status %></b>
+                          </li>
+                          <% end %>
+                          </ul>
+                      </div><!-- /  CONTENT BOX-->
+                    <div class="small-padded-alt">
+                    <%= link_to 'Valider', validate_booking_path(booking), method: :patch, class: "btn btn-success" %>
+                    </div>
+                </div><!-- BUTTON BOX-->
+              </div>
+          <% end %>
+      </div>
+    </div>
+  </div>

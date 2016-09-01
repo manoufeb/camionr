@@ -1,6 +1,6 @@
 class Truck < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   CATEGORIES = %w(8x4 6x4 4x2 Semi)
   GAUGE = %w(Toupie Grue Benne Bi-Benne)
 
